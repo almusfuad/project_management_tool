@@ -44,12 +44,11 @@ schema_view = get_schema_view(
                         "password": "user_password"
                   }
             - Project:
-
-                  - create:          
+         
                   {
                         "name": "Project Name",
                         "description": "Project Description",
-                        "owner": The ID of the user who owns the project, 
+                        "owner": User ID of the owner, 
                         "members": [
                               {
                                     "user": User ID of the member,
@@ -63,22 +62,18 @@ schema_view = get_schema_view(
                   }
             - Task:
 
-                  - create:
                   {
                         "title": "Task Title",
                         "description": "Task Description",
-                        "status": Can be "To Do", "In progress", or "Done",
-                        "priority": Can be "Low", "Medium", or "High",
-                        "project": The ID of the project the task belongs to (integer) -> 1,
-                        "assigned_to": The ID of the user assigned to the task (integer) or null,
-                        "projectMembers": List of User IDs who are part of the project -> [1, 2, 3]
+                        "status": "To Do"/"In progress"/"Done",
+                        "priority": "Low"/"Medium"/"High",
+                        "assigned_to": UserID(int) or null,
+                        "projectMembers": List of User IDs -> [1, 2, 3]
                   }
             - Comment:
 
-                  - create:
-                  {
-                        "task": Task ID(int) to which the comment is related -> 1,  
-                        "author": User ID(it) of the author of the comment -> 2,
+                  {  
+                        "author": UserID(int) of comment author -> 2,
                         "content": "This is a comment on the task"
                   }
             """,
