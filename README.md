@@ -12,7 +12,7 @@ First, clone the repository to your local machine using the following command:
 ```
 git clone https://github.com/almusfuad/project_management_tool.git
 
-cd project_management
+cd project_management_tool
 ```
 
 
