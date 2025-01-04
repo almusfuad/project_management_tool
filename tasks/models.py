@@ -15,6 +15,7 @@ class Task(models.Model):
       assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
       project = models.ForeignKey(Project, on_delete=models.CASCADE)
       created_at = models.DateTimeField(auto_now_add=True)
+      due_date = models.DateTimeField(null=True, blank=True)
 
 
       def __str__(self):
