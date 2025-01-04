@@ -10,17 +10,25 @@ schema_view = get_schema_view(
             This is a simple API for managing projects, tasks, and teams. It allows users to create, update, delete, and view projects and tasks. 
             The API supports user authentication and authorization via JWT, ensuring secure access to resources. 
 
+            
             Models Schema:
-            - Project: Represents a project with fields like name, description, created_at, updated_at, and owner (ForeignKey to User).
-            - Task: Represents a task with fields like title, description, due_date, completed, project (ForeignKey to Project), assigned_to (ForeignKey to User), created_at, and updated_at.
-            - Comment: Represents a comment with fields like task (ForeignKey to Task), author (ForeignKey to User), content, created_at, and updated_at.
+            - User: Represents a user with username(unique), email(unique), first_name, last_name, and password. 
+            - Project: Represents a project with name, description, owner (ForeignKey to User), and created_at.
+            - ProjectMember: Represents a member in a project with project (ForeignKey to Project), user (ForeignKey to User), and role (Admin/Member).
+            - Task: Represents a task with title, description, status (To Do/In progress/Done), priority (Low/Medium/High), assigned_to (ForeignKey to User), project (ForeignKey to Project), created_at, and due_date.
+            - Comment: Represents a comment with content, user (ForeignKey to User), task (ForeignKey to Task), and created_at.
+
+
 
             Relationships:
+            - A User can own multiple Projects.
             - A Project can have multiple Tasks.
+            - A Project can have multiple ProjectMembers.
             - A Task can have multiple Comments.
             - A Task is assigned to a User.
             - A Comment is authored by a User.
 
+            
             Output and Behavior:
             - JSON responses for all API endpoints.
             - Detailed error messages and status codes for invalid requests.
@@ -29,7 +37,7 @@ schema_view = get_schema_view(
             JSON Format for Creating Objects (POST):
             - User:
 
-                  - create: 
+                  - register: 
                   {
                         "username": "new_user",
                         "email": "new_user@example.com",
